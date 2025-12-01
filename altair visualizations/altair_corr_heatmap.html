@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-6f076835314cc5ee7b7af3f963a228f8"}, "mark": {"type": "rect"}, "encoding": {"color": {"field": "value", "scale": {"scheme": "viridis"}, "type": "quantitative"}, "tooltip": [{"field": "index", "type": "nominal"}, {"field": "variable", "type": "nominal"}, {"field": "value", "format": ".2f", "type": "quantitative"}], "x": {"field": "index", "title": "Variable", "type": "nominal"}, "y": {"field": "variable", "title": "Variable", "type": "nominal"}}, "height": 400, "title": "Correlation Between Macro Variables & RWA TVL", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-6f076835314cc5ee7b7af3f963a228f8": [{"index": "tvl", "variable": "tvl", "value": 1.0}, {"index": "treasury_yield", "variable": "tvl", "value": 0.0298234684782308}, {"index": "total_stablecoin_mcap", "variable": "tvl", "value": 0.24277883167578823}, {"index": "usdc_mcap", "variable": "tvl", "value": 0.22005510595625483}, {"index": "usdt_mcap", "variable": "tvl", "value": 0.24556831743157895}, {"index": "dai_mcap", "variable": "tvl", "value": -0.11392053944090136}, {"index": "m2_supply", "variable": "tvl", "value": 0.24099250880741024}, {"index": "tvl", "variable": "treasury_yield", "value": 0.0298234684782308}, {"index": "treasury_yield", "variable": "treasury_yield", "value": 1.0}, {"index": "total_stablecoin_mcap", "variable": "treasury_yield", "value": 0.524109973746479}, {"index": "usdc_mcap", "variable": "treasury_yield", "value": 0.5910803618177873}, {"index": "usdt_mcap", "variable": "treasury_yield", "value": 0.24738585691179052}, {"index": "dai_mcap", "variable": "treasury_yield", "value": -0.014340124763803338}, {"index": "m2_supply", "variable": "treasury_yield", "value": 0.2583446546340596}, {"index": "tvl", "variable": "total_stablecoin_mcap", "value": 0.24277883167578823}, {"index": "treasury_yield", "variable": "total_stablecoin_mcap", "value": 0.524109973746479}, {"index": "total_stablecoin_mcap", "variable": "total_stablecoin_mcap", "value": 1.0}, {"index": "usdc_mcap", "variable": "total_stablecoin_mcap", "value": 0.9751863654197578}, {"index": "usdt_mcap", "variable": "total_stablecoin_mcap", "value": 0.8529508584604236}, {"index": "dai_mcap", "variable": "total_stablecoin_mcap", "value": -0.5029768840057535}, {"index": "m2_supply", "variable": "total_stablecoin_mcap", "value": 0.8452781775512557}, {"index": "tvl", "variable": "usdc_mcap", "value": 0.22005510595625483}, {"index": "treasury_yield", "variable": "usdc_mcap", "value": 0.5910803618177873}, {"index": "total_stablecoin_mcap", "variable": "usdc_mcap", "value": 0.9751863654197578}, {"index": "usdc_mcap", "variable": "usdc_mcap", "value": 1.0}, {"index": "usdt_mcap", "variable": "usdc_mcap", "value": 0.716669103361216}, {"index": "dai_mcap", "variable": "usdc_mcap", "value": -0.47400878572952704}, {"index": "m2_supply", "variable": "usdc_mcap", "value": 0.7258671986229721}, {"index": "tvl", "variable": "usdt_mcap", "value": 0.24556831743157895}, {"index": "treasury_yield", "variable": "usdt_mcap", "value": 0.24738585691179052}, {"index": "total_stablecoin_mcap", "variable": "usdt_mcap", "value": 0.8529508584604236}, {"index": "usdc_mcap", "variable": "usdt_mcap", "value": 0.716669103361216}, {"index": "usdt_mcap", "variable": "usdt_mcap", "value": 1.0}, {"index": "dai_mcap", "variable": "usdt_mcap", "value": -0.5071189386354246}, {"index": "m2_supply", "variable": "usdt_mcap", "value": 0.9544039060254352}, {"index": "tvl", "variable": "dai_mcap", "value": -0.11392053944090136}, {"index": "treasury_yield", "variable": "dai_mcap", "value": -0.014340124763803338}, {"index": "total_stablecoin_mcap", "variable": "dai_mcap", "value": -0.5029768840057535}, {"index": "usdc_mcap", "variable": "dai_mcap", "value": -0.47400878572952704}, {"index": "usdt_mcap", "variable": "dai_mcap", "value": -0.5071189386354246}, {"index": "dai_mcap", "variable": "dai_mcap", "value": 1.0}, {"index": "m2_supply", "variable": "dai_mcap", "value": -0.5000350707641126}, {"index": "tvl", "variable": "m2_supply", "value": 0.24099250880741024}, {"index": "treasury_yield", "variable": "m2_supply", "value": 0.2583446546340596}, {"index": "total_stablecoin_mcap", "variable": "m2_supply", "value": 0.8452781775512557}, {"index": "usdc_mcap", "variable": "m2_supply", "value": 0.7258671986229721}, {"index": "usdt_mcap", "variable": "m2_supply", "value": 0.9544039060254352}, {"index": "dai_mcap", "variable": "m2_supply", "value": -0.5000350707641126}, {"index": "m2_supply", "variable": "m2_supply", "value": 1.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

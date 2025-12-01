@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RWA – Tokenization Visualizations</title>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <h1>Tokenized RWAs – Liquidity &amp; Capital Allocation</h1>
+    <p class="page-intro">
+      Interactive D3 visualizations based on RWA DeFi protocol data (TVL, chains, asset types, and macro liquidity).
+    </p>
+
+    <!-- 0. M2 Liquidity Gauge -->
+    <h2>M2 Liquidity Gauge</h2>
+    <p class="subtitle">
+      Current money supply growth mapped to a liquidity regime from contraction to expansion.
+    </p>
+
+    <div class="chart-container">
+      <div id="m2-gauge"></div>
+      <div id="m2-gauge-legend" class="legend-row"></div>
+    </div>
+
+    <p id="m2-gauge-caption" class="subtitle caption"></p>
+
+    <!-- 1. Macro Liquidity vs RWA TVL (time series) -->
+    <h2>Macro Liquidity vs RWA TVL</h2>
+    <p class="subtitle">RWA TVL vs total stablecoin market cap over time.</p>
+    <div class="chart-container">
+      <svg id="viz1" width="900" height="420"></svg>
+    </div>
+
+    <!-- 2. Correlation Between Macro Variables & RWA TVL (Altair) -->
+    <h2>Correlation Between Macro Variables &amp; RWA TVL</h2>
+    <p class="subtitle">
+      Statistical correlations between RWA TVL, stablecoin liquidity, M2 supply, and treasury yields.
+    </p>
+    <div class="chart-container">
+      <iframe
+        src="assets/altair/altair_corr_heatmap.html"
+        width="900"
+        height="700"
+        style="border:none; border-radius:16px;"
+      ></iframe>
+    </div>
+
+    <!-- 3. Yield Regimes vs Asset Composition -->
+    <h2>Yield Regimes vs Asset Composition</h2>
+    <p class="subtitle">
+      RWA asset composition (stacked) vs U.S. 10Y Treasury yield over time.
+    </p>
+    <div class="chart-container">
+      <svg id="viz5" width="900" height="420"></svg>
+    </div>
+
+    <!-- 4. Stablecoin Liquidity vs RWA TVL (Regression, Altair) -->
+    <h2>Stablecoin Liquidity vs RWA TVL (Regression)</h2>
+    <p class="subtitle">
+      Scatter plot with regression line showing how stablecoin market cap expansion is associated with RWA TVL growth.
+    </p>
+    <div class="chart-container">
+      <iframe
+        src="assets/altair/altair_scatter_regression.html"
+        width="900"
+        height="600"
+        style="border:none; border-radius:16px;"
+      ></iframe>
+    </div>
+
+    <!-- 5. Chain Allocation Over Time -->
+    <h2>Chain Allocation Over Time</h2>
+    <p class="subtitle">Stacked area of TVL across the top chains.</p>
+    <div class="chart-container">
+      <svg id="viz3" width="900" height="420"></svg>
+    </div>
+
+    <!-- 6. Protocol Concentration -->
+    <h2>Protocol Concentration</h2>
+    <p class="subtitle">Time series by protocol (top) and latest snapshot bar chart (bottom).</p>
+    <div class="chart-container">
+      <svg id="viz4_ts" width="900" height="360"></svg>
+      <svg id="viz4_bar" width="900" height="320" class="stacked-svg"></svg>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+  </div>
+
+  <!-- JS for the visualizations -->
+  <script src="viz.js"></script>
+  <script src="m2_gauge.js"></script>
+</body>
+</html>

@@ -3,129 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <title>RWA – Tokenization Visualizations</title>
+
+  <!-- D3 -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #050816;
-      color: #e6edf7;
-      margin: 0;
-      padding: 24px;
-    }
 
-    h1 {
-      margin-top: 0;
-      margin-bottom: 4px;
-      font-weight: 650;
-    }
-
-    h2 {
-      margin-top: 40px;
-      margin-bottom: 6px;
-      font-weight: 600;
-      font-size: 18px;
-    }
-
-    p.subtitle {
-      margin-top: 0;
-      font-size: 0.86rem;
-      color: #9ca6c5;
-    }
-
-    .chart-container {
-      background: #111827;
-      border-radius: 16px;
-      padding: 16px 20px 12px 20px;
-      margin-top: 10px;
-      max-width: 980px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-    }
-
-    svg {
-      font-size: 11px;
-    }
-
-    .axis path,
-    .axis line {
-      stroke: #4b5563;
-    }
-
-    .axis text {
-      fill: #e5e7eb;
-    }
-
-    .legend {
-      font-size: 11px;
-    }
-
-    /* Legend items feel interactive */
-    .legend g {
-      cursor: pointer;
-    }
-
-    .tooltip {
-      position: absolute;
-      padding: 6px 10px;
-      background: rgba(15, 23, 42, 0.96);
-      color: #f9fafb;
-      border-radius: 6px;
-      font-size: 11px;
-      pointer-events: none;
-      border: 1px solid #374151;
-      display: none;
-      z-index: 10;
-    }
-  </style>
+  <!-- Global styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page">
 
-  <h1>Tokenized RWAs – Liquidity & Capital Allocation</h1>
-  <p style="margin-top:0; color:#9ca3af; font-size:13px;">
-    Interactive D3 visualizations based on RWA DeFi protocol data (TVL, chains, asset types, and macro liquidity).
-  </p>
+    <h1>Tokenized RWAs – Liquidity &amp; Capital Allocation</h1>
+    <p class="page-intro">
+      Interactive D3 visualizations based on RWA DeFi protocol data (TVL, chains, asset types, and macro liquidity).
+    </p>
 
-  <!-- Viz 1 -->
-  <h2>1. Macro Liquidity vs RWA TVL</h2>
-  <p class="subtitle">RWA TVL vs total stablecoin market cap over time.</p>
-  <div class="chart-container">
-    <svg id="viz1" width="900" height="420"></svg>
+    <!-- 0. M2 Liquidity Gauge -->
+    <h2>0. M2 Liquidity Gauge</h2>
+    <p class="subtitle">
+      Current money supply growth mapped to a liquidity regime from contraction to expansion.
+    </p>
+
+    <div class="chart-container">
+      <div id="m2-gauge"></div>
+      <div id="m2-gauge-legend" class="legend-row"></div>
+    </div>
+
+    <p id="m2-gauge-caption" class="subtitle caption"></p>
+
+    <!-- 1. Macro Liquidity vs RWA TVL -->
+    <h2>1. Macro Liquidity vs RWA TVL</h2>
+    <p class="subtitle">RWA TVL vs total stablecoin market cap over time.</p>
+    <div class="chart-container">
+      <svg id="viz1" width="900" height="420"></svg>
+    </div>
+
+    <!-- 2. Chain Allocation Over Time -->
+    <h2>2. Chain Allocation Over Time</h2>
+    <p class="subtitle">Stacked area of TVL across the top chains.</p>
+    <div class="chart-container">
+      <svg id="viz3" width="900" height="420"></svg>
+    </div>
+
+    <!-- 3. Protocol Concentration -->
+    <h2>3. Protocol Concentration</h2>
+    <p class="subtitle">Time series by protocol (top) and latest snapshot bar chart (bottom).</p>
+    <div class="chart-container">
+      <svg id="viz4_ts" width="900" height="360"></svg>
+      <svg id="viz4_bar" width="900" height="320" class="stacked-svg"></svg>
+    </div>
+
+    <!-- 4. Yield Regimes vs Asset Composition -->
+    <h2>4. Yield Regimes vs Asset Composition</h2>
+    <p class="subtitle">
+      RWA asset composition (stacked) vs U.S. 10Y Treasury yield over time.
+    </p>
+    <div class="chart-container">
+      <svg id="viz5" width="900" height="420"></svg>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
   </div>
 
-  <!-- Viz 2 -->
-  <h2>2. Capital Allocation by Asset Type</h2>
-  <p class="subtitle">100% stacked area: Treasury vs Private Credit vs Diversified as share of RWA TVL.</p>
-  <div class="chart-container">
-    <svg id="viz2" width="900" height="420"></svg>
-  </div>
-
-  <!-- Viz 3 -->
-  <h2>3. Chain Allocation Over Time</h2>
-  <p class="subtitle">Stacked area of TVL across the top chains.</p>
-  <div class="chart-container">
-    <svg id="viz3" width="900" height="420"></svg>
-  </div>
-
-  <!-- Viz 4 -->
-  <h2>4. Protocol Concentration</h2>
-  <p class="subtitle">Time series by protocol (top) and latest snapshot bar chart (bottom).</p>
-  <div class="chart-container">
-    <svg id="viz4_ts" width="900" height="360"></svg>
-    <svg id="viz4_bar" width="900" height="320" style="margin-top: 12px;"></svg>
-  </div>
-
-  <!-- Viz 5 -->
-  <h2>5. Yield Regimes vs Asset Composition</h2>
-  <p class="subtitle">
-    RWA asset composition (stacked) vs U.S. 10Y Treasury yield over time.
-  </p>
-  <div class="chart-container">
-    <!-- 🔽 widened so the legend can sit to the right without overlapping -->
-    <svg id="viz5" width="900" height="420"></svg>
-  </div>
-
-  <div id="tooltip" class="tooltip"></div>
-
-  <!-- Your D3 code file -->
+  <!-- JS for the visualizations -->
   <script src="viz.js"></script>
+  <script src="m2_gauge.js"></script>
 </body>
 </html>

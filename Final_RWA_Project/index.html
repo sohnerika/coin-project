@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>RWA – Tokenization Visualizations</title>
@@ -10,12 +11,21 @@
   <!-- Global styles -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="page">
 
     <h1>Tokenized RWAs – Liquidity &amp; Capital Allocation</h1>
     <p class="page-intro">
       Interactive visualizations based on RWA DeFi protocol data (TVL, chains, asset types, and macro liquidity).
+    </p>
+
+    <!-- ====================== -->
+    <!-- SECTION A: MACRO ENVIRONMENT -->
+    <!-- ====================== -->
+    <h1 class="section-title">A. Macro Liquidity Environment</h1>
+    <p class="section-subtitle">
+      Visualizations showing how macro money supply and on-chain liquidity conditions relate to RWA growth.
     </p>
 
     <!-- 0. M2 Liquidity Gauge -->
@@ -27,30 +37,37 @@
     <div class="chart-container">
       <div id="m2-gauge"></div>
       <div id="m2-gauge-legend" class="legend-row"></div>
+
+      <p id="m2-gauge-caption" class="subtitle caption"></p>
     </div>
+
 
     <p id="m2-gauge-caption" class="subtitle caption"></p>
 
-    <!-- 1. Macro Liquidity vs RWA TVL (time series) -->
+    <!-- 1. Macro Liquidity vs RWA TVL -->
     <h2>Macro Liquidity vs RWA TVL</h2>
     <p class="subtitle">RWA TVL vs total stablecoin market cap over time.</p>
     <div class="chart-container">
       <svg id="viz1" width="900" height="420"></svg>
     </div>
 
-    <!-- 2. Correlation Between Macro Variables & RWA TVL (Altair) -->
+    <!-- 2. Correlation Between Macro Variables -->
     <h2>Correlation Between Macro Variables &amp; RWA TVL</h2>
     <p class="subtitle">
       Statistical correlations between RWA TVL, stablecoin liquidity, M2 supply, and treasury yields.
     </p>
     <div class="chart-container">
-      <iframe
-        src="assets/altair/altair_corr_heatmap.html"
-        width="900"
-        height="700"
-        style="border:none; border-radius:16px;"
-      ></iframe>
+      <iframe src="assets/altair/altair_corr_heatmap.html" width="900" height="700"
+        style="border:none; border-radius:16px;"></iframe>
     </div>
+
+    <!-- ====================== -->
+    <!-- SECTION B: YIELD DYNAMICS & CAPITAL ALLOCATION -->
+    <!-- ====================== -->
+    <h1 class="section-title">B. Yield Regimes & Capital Allocation</h1>
+    <p class="section-subtitle">
+      How U.S. Treasury yield cycles influence investor allocation across tokenized RWA asset types.
+    </p>
 
     <!-- 3. Yield Regimes vs Asset Composition -->
     <h2>Yield Regimes vs Asset Composition</h2>
@@ -61,6 +78,14 @@
       <svg id="viz5" width="900" height="420"></svg>
     </div>
 
+    <!-- ====================== -->
+    <!-- SECTION C: CHAIN INFRASTRUCTURE -->
+    <!-- ====================== -->
+    <h1 class="section-title">C. On-Chain Infrastructure Growth</h1>
+    <p class="section-subtitle">
+      How RWA liquidity is distributed across blockchains and how chain dominance shifts over time.
+    </p>
+
     <!-- 4. Chain Allocation Over Time -->
     <h2>Chain Allocation Over Time</h2>
     <p class="subtitle">Stacked area of TVL across the top chains.</p>
@@ -68,25 +93,30 @@
       <svg id="viz3" width="900" height="420"></svg>
     </div>
 
+    <!-- ====================== -->
+    <!-- SECTION D: PROTOCOL LEVEL STRUCTURE -->
+    <!-- ====================== -->
+    <h1 class="section-title">D. Protocol Concentration</h1>
+    <p class="section-subtitle">
+      Concentration of liquidity across leading RWA protocols — both historically and in the latest snapshot.
+    </p>
+
     <!-- 5. Protocol Concentration (Altair) -->
     <h2>Protocol Concentration</h2>
     <p class="subtitle">
       Interactive view of protocol-level concentration and distribution of RWA TVL.
     </p>
     <div class="chart-container">
-      <iframe
-        src="assets/altair/altair_protocol_concentration.html"
-        width="900"
-        height="600"
-        style="border:none; border-radius:16px;"
-      ></iframe>
+      <iframe src="assets/altair/altair_protocol_concentration.html" width="900" height="600"
+        style="border:none; border-radius:16px;"></iframe>
     </div>
 
     <div id="tooltip" class="tooltip"></div>
   </div>
 
-  <!-- JS for the visualizations -->
+  <!-- JS for visualizations -->
   <script src="viz.js"></script>
   <script src="m2_gauge.js"></script>
 </body>
+
 </html>

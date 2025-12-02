@@ -3,7 +3,6 @@
    ============================ */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  /* subtle gradient + soft vignette */
   background:
     radial-gradient(circle at top left, rgba(56, 189, 248, 0.07), transparent 55%),
     radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.05), transparent 55%),
@@ -29,6 +28,8 @@ h1 {
   font-size: 2.2rem;
   letter-spacing: 0.02em;
   color: #f9fafb;
+  text-align: center;
+  width: 100%;
 }
 
 h2 {
@@ -39,10 +40,35 @@ h2 {
   color: #e5e7eb;
 }
 
+/* PAGE INTRO */
 .page-intro {
-  margin-top: 0;
-  font-size: 0.88rem;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-size: 0.95rem;
   color: #9ca3af;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Title (Macro, Yield, Chains, Protocols) */
+.section-title {
+  text-align: left;
+  margin-top: 70px;
+  margin-bottom: 12px;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #f9fafb;
+  letter-spacing: 0.015em;
+}
+
+.section-subtitle {
+  margin-top: -4px;
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+  color: #b0b9c9;
+  max-width: 900px;
 }
 
 .subtitle {
@@ -69,18 +95,24 @@ h2 + .subtitle {
 .chart-container {
   background: radial-gradient(circle at top left, #111827 0, #020617 90%);
   border-radius: 18px;
-  padding: 18px 22px 14px 22px;
+  padding: 18px 18px 14px 18px; /* slightly tighter left/right */
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   max-width: 980px;
   border: 1px solid rgba(148, 163, 184, 0.15);
   box-shadow:
     0 18px 45px rgba(15, 23, 42, 0.85),
     inset 0 0 18px rgba(15, 23, 42, 0.9);
   transition: transform 120ms ease-out, box-shadow 120ms ease-out, border-color 120ms ease-out;
+
+  /* center all content inside */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-/* very subtle hover to feel interactive but not flashy */
+/* very subtle hover effect */
 .chart-container:hover {
   transform: translateY(-2px);
   box-shadow:
@@ -89,22 +121,33 @@ h2 + .subtitle {
   border-color: rgba(52, 211, 153, 0.35);
 }
 
-/* Make SVGs scale nicely within the card */
+/* Make SVGs scale + center nicely */
 .chart-container svg,
 svg.stacked-svg {
   font-size: 11px;
   width: 100%;
   max-width: 900px;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Add a bit of breathing room under each SVG */
+/* Altair iframes centered + sized like SVGs */
+.chart-container iframe {
+  display: block;
+  width: 100%;        /* override inline width="900" */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Breathing room under each SVG */
 .chart-container svg {
   margin-bottom: 4px;
 }
 
 /* ============================
-   Axes / legends created by D3
+   Axes & Legends
    ============================ */
 .axis path,
 .axis line {
@@ -122,16 +165,24 @@ svg.stacked-svg {
 
 .legend g {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .legend rect {
-  rx: 3;
-  ry: 3;
+  rx: 4;
+  ry: 4;
+  width: 14px;
+  height: 14px;
 }
 
-/* Gauge legend row */
 .legend-row {
-  margin-top: 12px;
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
 /* ============================
@@ -151,7 +202,6 @@ svg.stacked-svg {
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
 }
 
-/* small triangle pointer */
 .tooltip::after {
   content: "";
   position: absolute;
@@ -163,7 +213,7 @@ svg.stacked-svg {
 }
 
 /* ============================
-   Responsive tweaks
+   Responsive
    ============================ */
 @media (max-width: 768px) {
   .page {
@@ -174,8 +224,17 @@ svg.stacked-svg {
     font-size: 1.7rem;
   }
 
+  .section-title {
+    font-size: 1.4rem;
+    margin-top: 50px;
+  }
+
   .chart-container {
     padding: 14px 14px 10px 14px;
     border-radius: 16px;
+  }
+
+  .legend-row {
+    gap: 20px;
   }
 }

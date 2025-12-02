@@ -15,7 +15,7 @@
 
     <h1>Tokenized RWAs – Liquidity &amp; Capital Allocation</h1>
     <p class="page-intro">
-      Interactive D3 visualizations based on RWA DeFi protocol data (TVL, chains, asset types, and macro liquidity).
+      Interactive visualizations based on RWA DeFi protocol data (TVL, chains, asset types, and macro liquidity).
     </p>
 
     <!-- 0. M2 Liquidity Gauge -->
@@ -61,33 +61,25 @@
       <svg id="viz5" width="900" height="420"></svg>
     </div>
 
-    <!-- 4. Stablecoin Liquidity vs RWA TVL (Regression, Altair) -->
-    <h2>Stablecoin Liquidity vs RWA TVL (Regression)</h2>
-    <p class="subtitle">
-      Scatter plot with regression line showing how stablecoin market cap expansion is associated with RWA TVL growth.
-    </p>
-    <div class="chart-container">
-      <iframe
-        src="assets/altair/altair_scatter_regression.html"
-        width="900"
-        height="600"
-        style="border:none; border-radius:16px;"
-      ></iframe>
-    </div>
-
-    <!-- 5. Chain Allocation Over Time -->
+    <!-- 4. Chain Allocation Over Time -->
     <h2>Chain Allocation Over Time</h2>
     <p class="subtitle">Stacked area of TVL across the top chains.</p>
     <div class="chart-container">
       <svg id="viz3" width="900" height="420"></svg>
     </div>
 
-    <!-- 6. Protocol Concentration -->
+    <!-- 5. Protocol Concentration (Altair) -->
     <h2>Protocol Concentration</h2>
-    <p class="subtitle">Time series by protocol (top) and latest snapshot bar chart (bottom).</p>
+    <p class="subtitle">
+      Interactive view of protocol-level concentration and distribution of RWA TVL.
+    </p>
     <div class="chart-container">
-      <svg id="viz4_ts" width="900" height="360"></svg>
-      <svg id="viz4_bar" width="900" height="320" class="stacked-svg"></svg>
+      <iframe
+        src="assets/altair/altair_protocol_concentration.html"
+        width="900"
+        height="600"
+        style="border:none; border-radius:16px;"
+      ></iframe>
     </div>
 
     <div id="tooltip" class="tooltip"></div>
